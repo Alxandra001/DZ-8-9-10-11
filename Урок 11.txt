@@ -1,0 +1,27 @@
+Вот пример кода на языке Java, который добавляет 500000 элементов в ArrayList и LinkedList и измеряет время, затраченное на это:
+import java.util.ArrayList;
+import java.util.LinkedList;
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        long startTime = System.currentTimeMillis();
+        // Добавляем 500000 элементов в ArrayList
+        for (int i = 0; i < 500000; i++) {
+            arrayList.add(i);
+        }
+        long endTime = System.currentTimeMillis();
+        long arrayListTime = endTime - startTime;
+        startTime = System.currentTimeMillis();
+        // Добавляем 500000 элементов в LinkedList
+        for (int i = 0; i < 500000; i++) {
+            linkedList.add(i);
+        }
+        endTime = System.currentTimeMillis();
+        long linkedListTime = endTime - startTime;
+        System.out.println("Время, затраченное на добавление 500000 элементов в ArrayList: " + arrayListTime + " мс");
+        System.out.println("Время, затраченное на добавление 500000 элементов в LinkedList: " + linkedListTime + " мс");
+    }
+}
+
+Результат выполнения программы будет выводить время, затраченное на добавление 500000 элементов в ArrayList и LinkedList. Обычно ArrayList выполняет операцию быстрее, чем LinkedList, потому что LinkedList требует больше операций для добавления элементов из-за своей структуры данных.

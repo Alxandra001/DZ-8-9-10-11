@@ -1,0 +1,62 @@
+// Класс исключения NameException
+class NameException extends Exception {
+    public NameException(String message) {
+        super(message);
+    }
+}
+// Абстрактный класс Phone
+abstract class Phone {
+    private String number;
+    private String model;
+    private double weight;
+    public Phone(String number, String model, double weight) {
+        this.number = number;
+        this.model = model;
+        this.weight = weight;
+    }
+    public String getNumber() {
+        return number;
+    }
+    // Абстрактный метод info()
+    public abstract void info();
+    // Метод receiveCall для получения имени от пользователя
+    public void receiveCall(String name) throws NameException {
+        if (name.length() < 4) {
+            throw new NameException("Name length should be at least 4 characters");
+        }
+        System.out.println("Receiving call from " + name);
+    }
+}
+// Класс-наследник SamsungPhone
+class SamsungPhone extends Phone {
+    public SamsungPhone(String number, String model, double weight) {
+        super(number, model, weight);
+    }
+    // Реализация метода info() для SamsungPhone
+    @Override
+    public void info() {
+        System.out.println("Samsung Phone: " + getNumber() + ", " + super.model + ", " + super.weight + "kg");
+    }
+}
+// Класс-наследник XiaomiPhone
+class XiaomiPhone extends Phone {
+    public XiaomiPhone(String number, String model, double weight) {
+        super(number, model, weight);
+    }
+    // Реализация метода info() для XiaomiPhone
+    @Override
+    public void info() {
+        System.out.println("Xiaomi Phone: " + getNumber() + ", " + super.model + ", " + super.weight + "kg");
+    }
+}
+// Класс-наследник ApplePhone
+class ApplePhone extends Phone {
+    public ApplePhone(String number, String model, double weight) {
+        super(number, model, weight);
+    }
+    // Реализация метода info() для ApplePhone
+    @Override
+    public void info() {
+        System.out.println("Apple Phone: " + getNumber() + ", " + super.model + ", " + super.weight + "kg");
+    }
+}

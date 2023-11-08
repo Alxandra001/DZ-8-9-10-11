@@ -1,0 +1,77 @@
+// Интерфейс Callable 
+interface Callable<T> { 
+    void receiveCall(T caller); 
+} 
+// Интерфейс Informable 
+interface Informable { 
+    default void info() { 
+        System.out.println("Phone information"); 
+    } 
+} 
+// Абстрактный класс Phone с применением интерфейсов 
+abstract class Phone<T> implements Callable<T>, Informable { 
+    private String number; 
+    private String model; 
+    private double weight; 
+    
+    public Phone(String number, String model, double weight) { 
+        this.number = number; 
+        this.model = model; 
+        this.weight = weight; 
+    } 
+    
+    public String getNumber() { 
+        return number; 
+    } 
+    
+    // Реализация метода receiveCall() из интерфейса Callable 
+    @Override 
+    public void receiveCall(T caller) { 
+        System.out.println("Incoming call from " + caller.toString()); 
+    } 
+    
+    // Реализация метода info() из интерфейса Informable 
+    @Override 
+    public void info() { 
+        System.out.println("Phone information: " + number + ", " + model + ", " + weight + "kg"); 
+    } 
+    
+    // Абстрактный метод info() 
+    public abstract void info(); 
+} 
+// Класс-наследник SamsungPhone 
+class SamsungPhone<T> extends Phone<T> { 
+    public SamsungPhone(String number, String model, double weight) { 
+        super(number, model, weight); 
+    } 
+    
+    // Реализация метода info() для SamsungPhone 
+    @Override 
+    public void info() { 
+        System.out.println("Samsung Phone: " + getNumber() + ", " + super.model + ", " + super.weight + "kg"); 
+    } 
+} 
+// Класс-наследник XiaomiPhone 
+class XiaomiPhone<T> extends Phone<T> { 
+    public XiaomiPhone(String number, String model, double weight) { 
+        super(number, model, weight); 
+    } 
+    
+    // Реализация метода info() для XiaomiPhone 
+    @Override 
+    public void info() { 
+        System.out.println("Xiaomi Phone: " + getNumber() + ", " + super.model + ", " + super.weight + "kg"); 
+    } 
+} 
+// Класс-наследник ApplePhone 
+class ApplePhone<T> extends Phone<T> { 
+    public ApplePhone(String number, String model, double weight) { 
+        super(number, model, weight); 
+    } 
+    
+    // Реализация метода info() для ApplePhone 
+    @Override 
+    public void info() { 
+        System.out.println("Apple Phone: " + getNumber() + ", " + super.model + ", " + super.weight + "kg"); 
+    } 
+}
